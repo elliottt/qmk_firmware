@@ -1,0 +1,31 @@
+#pragma once
+
+#undef  TAPPING_TERM
+#define TAPPING_TERM 180
+
+#undef  TAPPING_TERM_PER_KEY
+#define TAPPING_TERM_PER_KEY
+
+#undef QMK_KEYS_PER_SCAN
+#define QMK_KEYS_PER_SCAN 4
+
+#undef BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+
+#define AUTO_SHIFT_TIMEOUT 150
+#define NO_AUTO_SHIFT_ALPHA
+
+// Making this non-zero fixes behavior where some applications wouldn't register auto-shifted keys. Experimentally I
+// found that 5 works well enough.
+#define TAP_CODE_DELAY 5
+
+#undef MOUSEKEY_DELAY
+#define MOUSEKEY_DELAY          0
+#undef MOUSEKEY_INTERVAL
+#define MOUSEKEY_INTERVAL       16
+#undef MOUSEKEY_WHEEL_DELAY
+#define MOUSEKEY_WHEEL_DELAY    0
+#undef MOUSEKEY_MAX_SPEED
+#define MOUSEKEY_MAX_SPEED      6
+#undef MOUSEKEY_TIME_TO_MAX
+#define MOUSEKEY_TIME_TO_MAX    64
