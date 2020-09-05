@@ -8,10 +8,14 @@
 #define NUMB 2
 #define FUN  3
 
-#define LCTL_A   MT(MOD_LCTL, KC_A)
-#define LGUI_Z   MT(MOD_LGUI, KC_Z)
-#define RCTL_SC  MT(MOD_RCTL, KC_SCLN)
-#define RGUI_SL  MT(MOD_RGUI, KC_SLSH)
+#define _LCTL(key)  MT(MOD_LCTL, (key))
+#define _LGUI(key)  MT(MOD_LGUI, (key))
+#define _LSFT(key)  MT(MOD_LSFT, (key))
+#define _LALT(key)  MT(MOD_LALT, (key))
+#define _RCTL(key)  MT(MOD_RCTL, (key))
+#define _RGUI(key)  MT(MOD_RGUI, (key))
+#define _RSFT(key)  MT(MOD_RSFT, (key))
+#define _RALT(key)  MT(MOD_RALT, (key))
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
@@ -42,10 +46,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                  | NUMB|     |     |
  *                                  +-----+-----+-----+
  */
-        KC_TRNS,              KC_1,    KC_2,    KC_3,    KC_4,     KC_5, KC_TRNS,
-        MT(MOD_LALT, KC_EQL), KC_Q,    KC_W,    KC_E,    KC_R,     KC_T, KC_ESC,
-        MT(MOD_LCTL, KC_TAB), LCTL_A,  KC_S,    KC_D,    KC_F,     KC_G,
-        KC_LSFT,              LGUI_Z,  KC_X,    KC_C,    KC_V,     KC_B, KC_LGUI,
+        KC_TRNS,              KC_1,        KC_2,        KC_3,        KC_4, KC_5, KC_TRNS,
+        MT(MOD_LALT, KC_EQL), KC_Q,        KC_W,        KC_E,        KC_R, KC_T, KC_ESC,
+        MT(MOD_LCTL, KC_TAB), _LCTL(KC_A), KC_S,        KC_D,        KC_F, KC_G,
+        KC_LSFT,              _LSFT(KC_Z), _LALT(KC_X), KC_C, _LGUI(KC_V), KC_B, KC_LGUI,
         KC_TRNS,              KC_TRNS, KC_TRNS, KC_TRNS, MO(SYMB),
                                                                     KC_TRNS, KC_TRNS,
                                                                              KC_TRNS,
@@ -69,10 +73,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *    |     |     | NUMB|
  *    +-----+-----+-----+
  */
-             KC_TRNS, KC_6,   KC_7, KC_8,    KC_9,    KC_0,     KC_TRNS,
-             KC_ESC,  KC_Y,   KC_U, KC_I,    KC_O,    KC_P,     MT(MOD_LALT, KC_MINS),
-                      KC_H,   KC_J, KC_K,    KC_L,    RCTL_SC,  MT(MOD_RCTL, KC_QUOT),
-             KC_RGUI, KC_N,   KC_M, KC_COMM, KC_DOT,  RGUI_SL,  KC_RSFT,
+             KC_TRNS, KC_6,   KC_7,        KC_8,    KC_9,           KC_0,           KC_TRNS,
+             KC_ESC,  KC_Y,   KC_U,        KC_I,    KC_O,           KC_P,           MT(MOD_LALT, KC_MINS),
+                      KC_H,   KC_J,        KC_K,    KC_L,           _RCTL(KC_SCLN), MT(MOD_RCTL, KC_QUOT),
+             KC_RGUI, KC_N,   _RGUI(KC_M), KC_COMM, _LALT(KC_DOT),  _RSFT(KC_SLSH), KC_RSFT,
                               MO(SYMB), MO(FUN), KC_TRNS, KC_TRNS,  KC_TRNS,
              KC_TRNS, KC_TRNS,
              KC_TRNS,
@@ -95,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |     |     |
  *                                  +-----+-----+-----+
  *                                  |     |     |     |
- *                                  | ESC |     +-----+
+ *                                  |     | ESC +-----+
  *                                  |     |     |     |
  *                                  +-----+-----+-----+
  */
@@ -106,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                                       KC_TRNS, KC_TRNS,
                                                                KC_TRNS,
-                                              KC_ESC, KC_TRNS, KC_TRNS,
+                                              KC_TRNS, KC_ESC, KC_TRNS,
 /* right hand
  *        +-----+-----+-----+-----+-----+-----+-------+
  *        | f12 | f6  | f7  | f8  | f9  | f10 |       |
@@ -122,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *    |     |     |
  *    +-----+-----+-----+
  *    |     |     |     |
- *    +-----+     | ESC |
+ *    +-----+ ESC |     |
  *    |     |     |     |
  *    +-----+-----+-----+
  */
@@ -133,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_ESC
+       KC_TRNS, KC_ESC, KC_TRNS
 ),
 [NUMB] = LAYOUT_ergodox( // numbers
 /* Left hand
@@ -151,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |     |     |
  *                                  +-----+-----+-----+
  *                                  |     |     |     |
- *                                  | ESC |     +-----+
+ *                                  |     | ESC +-----+
  *                                  |     |     |     |
  *                                  +-----+-----+-----+
  */
@@ -162,7 +166,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        RESET,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                            KC_TRNS, KC_TRNS,
                                                     KC_TRNS,
-                                   KC_ESC, KC_TRNS, KC_TRNS,
+                                   KC_TRNS, KC_ESC, KC_TRNS,
 /* right hand
  *        +-----+-----+-----+-----+-----+-----+-------+
  *        |     |     |     |     |     |     |       |
@@ -173,12 +177,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *        |     +-----+-----+-----+-----+-----+-------+
  *        |     | MLFT| MUP | MDWN| MRHT|     |       |
  *        +-----+-----+-----+-----+-----+-----+-----+-+
- *                    |     |     |     |     |FLASH|
+ *                    |     |     |     |     |     |
  *    +-----+-----+   +-----+-----+-----+-----+-----+
  *    |     |     |
  *    +-----+-----+-----+
  *    |     |     |     |
- *    +-----+     | ESC |
+ *    +-----+ ESC |     |
  *    |     |     |     |
  *    +-----+-----+-----+
  */
@@ -186,10 +190,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS,  KC_6,    KC_7,    KC_8,    KC_9,     KC_0,    KC_TRNS,
                  KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_TRNS, KC_TRNS,
        KC_TRNS,  KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R,  KC_TRNS, KC_TRNS,
-                          KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, RESET,
+                          KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_ESC
+       KC_TRNS, KC_ESC, KC_TRNS
 ),
 [FUN] = LAYOUT_ergodox( // function keys
 /* Left hand
