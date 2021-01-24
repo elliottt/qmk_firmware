@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ENT,  LT(NUMB, KC_SPC), MO(SYM),      MO(FUN),         KC_TRNS
     ),
 
-    [SYM] = LAYOUT_tightyl(
+    [NUMB] = LAYOUT_tightyl(
 // left hand
 //  +-------+-----+-----+-----+-----+-----+
 //  |       |  1  |  2  |  3  |  4  |  5  |
@@ -148,7 +148,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //        +-----+-----+-----+-----+-----+-------+
 //        |     |     |     |     |     |       |
 //  +-----+-----+-----+-----+-----+-----+-------+
-//  |     |     |     |     |     |
+//  |     |     |     |     |RESET|
 //  +-----+-----+-----+-----+-----+
              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
