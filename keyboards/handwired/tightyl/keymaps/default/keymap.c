@@ -80,15 +80,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //        +-----+-----+-----+-----+-----+-------+
 //        |  6  |  7  |  8  |  9  |  0  |       |
 //        +-----+-----+-----+-----+-----+-------+
-//        | LEFT|  UP | DOWN|RIGHT|     |       |
+//        | LEFT| DOWN| UP  |RIGHT|     |       |
 //        +-----+-----+-----+-----+-----+-------+
-//        | MLFT| MUP | MDN |MRGHT|     |       |
+//        | MLFT| MDN | MUP |MRGHT|     |       |
 //  +-----+-----+-----+-----+-----+-----+-------+
 //  |     |     |     |     |     |
 //  +-----+-----+-----+-----+-----+
              KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_TRNS,
-             KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS,
-             KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, KC_TRNS, KC_TRNS,
+             KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_TRNS, KC_TRNS,
+             KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
