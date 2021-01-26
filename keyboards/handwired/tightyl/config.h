@@ -23,13 +23,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VENDOR_ID    0xFEED
 #define PRODUCT_ID   0x0000
 #define DEVICE_VER   0x0001
-#define MANUFACTURER Trevor Elliott
+#define MANUFACTURER elliottt
 #define PRODUCT      tightyl
 
 /* key matrix size */
 /* rows are stacked */
 #define MATRIX_ROWS 8
 #define MATRIX_COLS 6
+
+#define MOUSEKEY_INTERVAL      20
+#define MOUSEKEY_DELAY         0
+#define MOUSEKEY_TIME_TO_MAX   60
+#define MOUSEKEY_MAX_SPEED     7
+#define MOUSEKEY_WHEEL_DELAY   0
+#define TAPPING_TOGGLE         1
+
+#define IGNORE_MOD_TAP_INTERRUPT
 
 /*
  * Keyboard Matrix Assignments
