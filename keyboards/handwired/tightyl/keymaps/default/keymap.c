@@ -193,3 +193,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        // add 100 to the homerow modifiers to make them trigger a bit less
+        // often
+        case LCTL_T(KC_A):
+        case LALT_T(KC_X):
+        case LSFT_T(KC_C):
+        case LGUI_T(KC_V):
+        case RGUI_T(KC_M):
+        case RSFT_T(KC_COMM):
+        case RALT_T(KC_DOT):
+        case RCTL_T(KC_SCLN):
+            return TAPPING_TERM + 100;
+
+        default:
+            return TAPPING_TERM;
+    }
+}
+
+bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LCTL_T(KC_A):
+        case LALT_T(KC_X):
+        case LSFT_T(KC_C):
+        case LGUI_T(KC_V):
+        case RGUI_T(KC_M):
+        case RSFT_T(KC_COMM):
+        case RALT_T(KC_DOT):
+        case RCTL_T(KC_SCLN):
+        case LT(NUMB, KC_SPC):
+            return true;
+
+        default:
+            return false;
+    }
+}
