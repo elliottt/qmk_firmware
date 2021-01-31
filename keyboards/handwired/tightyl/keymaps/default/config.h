@@ -1,13 +1,13 @@
 #pragma once
 
+/* #undef PERMISSIVE_HOLD */
+/* #define PERMISSIVE_HOLD */
+
 #undef IGNORE_MOD_TAP_INTERRUPT
 #define IGNORE_MOD_TAP_INTERRUPT
 
 #undef TAPPING_TERM
 #define TAPPING_TERM 200
-
-#undef TAPPING_TERM_PER_KEY
-#define TAPPING_TERM_PER_KEY
 
 #undef RETRO_TAPPING
 #define RETRO_TAPPING
