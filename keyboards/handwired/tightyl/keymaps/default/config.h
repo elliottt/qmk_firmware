@@ -1,8 +1,5 @@
 #pragma once
 
-#undef PERMISSIVE_HOLD
-#define PERMISSIVE_HOLD
-
 #undef IGNORE_MOD_TAP_INTERRUPT
 #define IGNORE_MOD_TAP_INTERRUPT
 
