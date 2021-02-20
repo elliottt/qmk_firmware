@@ -15,3 +15,17 @@
  */
 
 #include "tightyl.h"
+
+// Ignore the blank parts of the matrix, as they're used for left-side detection. Without this, there will be a constant
+// keypress registered.
+const matrix_row_t matrix_mask[MATRIX_ROWS] = {
+//  87654321
+  0b00111111,
+  0b00111111,
+  0b00111111,
+  0b00011111,
+  0b00111111,
+  0b00111111,
+  0b00111111,
+  0b00011111,
+};
