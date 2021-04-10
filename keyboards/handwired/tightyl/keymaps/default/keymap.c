@@ -15,6 +15,14 @@
  */
 #include QMK_KEYBOARD_H
 
+const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END};
+
+combo_t key_combos[] = {
+    COMBO(jk_combo, KC_ESC),
+    COMBO(df_combo, KC_TAB),
+};
+
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
     BASE,

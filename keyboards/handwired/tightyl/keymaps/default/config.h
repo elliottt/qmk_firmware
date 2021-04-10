@@ -14,3 +14,6 @@
 
 #undef RETRO_TAPPING_PER_KEY
 #define RETRO_TAPPING_PER_KEY
+
+#undef COMBO_COUNT
+#define COMBO_COUNT 2
