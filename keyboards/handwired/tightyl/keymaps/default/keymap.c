@@ -41,10 +41,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                +-----+-----+-----+-----+-----+
  */
 
-    KC_EQL,         KC_Q,         KC_W,         KC_E,         KC_R,            KC_T,
-    LCTL_T(KC_TAB), LCTL_T(KC_A), KC_S,         KC_D,         KC_F,            KC_G,
-    KC_LSFT,        KC_Z,         LALT_T(KC_X), LSFT_T(KC_C), LGUI_T(KC_V),    KC_B,
-                                  KC_TRNS,      MO(FUN),      LT(SYM, KC_ESC), LT(NAV, KC_BSPC), LT(NUMP, KC_DEL),
+    KC_EQL,         KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,
+    LCTL_T(KC_TAB), LCTL_T(KC_A), KC_S,         KC_D,         KC_F,         KC_G,
+    KC_LSFT,        KC_Z,         LALT_T(KC_X), LSFT_T(KC_C), LGUI_T(KC_V), KC_B,
+                                  KC_TRNS,      MO(FUN),      MO(SYM),      LT(NAV, KC_BSPC), LT(NUMP, KC_DEL),
 /* right hand
  *        +-----+-----+-----+-----+-----+-------+
  *        |  Y  |  U  |  I  |  O  |  P  |-/RALT |
