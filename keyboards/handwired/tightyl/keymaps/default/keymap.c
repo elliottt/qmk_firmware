@@ -17,7 +17,8 @@
 
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
-    BASE,
+    QWERTY,
+    COLEMAK,
     SYM,
     NUMB,  // split-hand number layer
     NUMP,  // right-hand number pad
@@ -25,42 +26,68 @@ enum layer_names {
     FUN,
 };
 
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /* Base */
-    [BASE] = LAYOUT_tightyl(
-/*
- * left hand
- *  +-------+-----+-----+-----+-----+-----+
- *  | =     |  Q  |  W  |  E  |  R  |  T  |
- *  +-------+-----+-----+-----+-----+-----+
- *  |TAB/CTL| C/A |  S  |  D  |  F  |  G  |
- *  +-------+-----+-----+-----+-----+-----+
- *  | LSHIFT|  Z  | A/X | S/C | G/V |  B  |
- *  +-------+-----+-----+-----+-----+-----+-----+
- *                |     | FUN | SYM | BSP | DEL |
- *                +-----+-----+-----+-----+-----+
- */
+// left hand
+//  +-------+-----+-----+-----+-----+-----+
+//  | =     | l01 | l02 | l03 | l04 | l05 |
+//  +-------+-----+-----+-----+-----+-----+
+//  |TAB/CTL|C/l11| l12 | l13 | l14 | l15 |
+//  +-------+-----+-----+-----+-----+-----+
+//  | LSHIFT| l21 |A/l22|S/l23|G/l24| l25 |
+//  +-------+-----+-----+-----+-----+-----+-----+
+//                |     | FUN | SYM | BSP | DEL |
+//                +-----+-----+-----+-----+-----+
+//
+// right hand
+//        +-----+-----+-----+-----+-----+-------+
+//        | r00 | r01 | r02 | r03 | r04 |   -   |
+//        +-----+-----+-----+-----+-----+-------+
+//        | r10 | r11 | r12 | r13 |C/r14|'/RCTL |
+//        +-----+-----+-----+-----+-----+-------+
+//        | r20 |G/r21|S/r22|A/r23| r24 | RSHIFT|
+//  +-----+-----+-----+-----+-----+-----+-------+
+//  | ENT | SPC | SYM | FUN |     |
+//  +-----+-----+-----+-----+-----+
+#define BASE_LAYER(                                                                                         \
+  l01, l02, l03, l04, l05,                                                                                  \
+  l11, l12, l13, l14, l15,                                                                                  \
+  l21, l22, l23, l24, l25,                                                                                  \
+                                                                                                            \
+  r00, r01, r02, r03, r04,                                                                                  \
+  r10, r11, r12, r13, r14,                                                                                  \
+  r20, r21, r22, r23, r24)                                                                                  \
+                                                                                                            \
+LAYOUT_tightyl(                                                                                             \
+    KC_EQL,         l01,         l02,         l03,         l04,         l05,                                \
+    LCTL_T(KC_TAB), LCTL_T(l11), l12,         l13,         l14,         l15,                                \
+    KC_LSFT,        l21,         LALT_T(l22), LSFT_T(l23), LGUI_T(l24), l25,                                \
+                                 KC_TRNS,     MO(FUN),     MO(SYM),     LT(NAV, KC_BSPC), LT(NUMP, KC_DEL), \
+                                                                                                            \
+             r00,              r01,         r02,         r03,         r04,         KC_MINS,                 \
+             r10,              r11,         r12,         r13,         RCTL_T(r14), RCTL_T(KC_QUOT),         \
+             r20,              RGUI_T(r21), RSFT_T(r22), RALT_T(r23), r24,         KC_RSFT,                 \
+    KC_ENT,  LT(NUMB, KC_SPC), MO(SYM),     MO(FUN),     KC_TRNS                                            \
+    )
 
-    KC_EQL,         KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,
-    LCTL_T(KC_TAB), LCTL_T(KC_A), KC_S,         KC_D,         KC_F,         KC_G,
-    KC_LSFT,        KC_Z,         LALT_T(KC_X), LSFT_T(KC_C), LGUI_T(KC_V), KC_B,
-                                  KC_TRNS,      MO(FUN),      MO(SYM),      LT(NAV, KC_BSPC), LT(NUMP, KC_DEL),
-/* right hand
- *        +-----+-----+-----+-----+-----+-------+
- *        |  Y  |  U  |  I  |  O  |  P  |-/RALT |
- *        +-----+-----+-----+-----+-----+-------+
- *        |  H  |  J  |  K  |  L  | C/; |'/RCTL |
- *        +-----+-----+-----+-----+-----+-------+
- *        |  N  | G/M | S/, | A/. |  /  | RSHIFT|
- *  +-----+-----+-----+-----+-----+-----+-------+
- *  | ENT | SPC | SYM | FUN |     |
- *  +-----+-----+-----+-----+-----+
- */
-             KC_Y,             KC_U,            KC_I,            KC_O,           KC_P,            KC_MINS,
-             KC_H,             KC_J,            KC_K,            KC_L,           RCTL_T(KC_SCLN), RCTL_T(KC_QUOT),
-             KC_N,             RGUI_T(KC_M),    RSFT_T(KC_COMM), RALT_T(KC_DOT), KC_SLSH,         KC_RSFT,
-    KC_ENT,  LT(NUMB, KC_SPC), MO(SYM),         MO(FUN),         KC_TRNS
-    ),
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    /* Default QWERTY base layer */
+    [QWERTY] = BASE_LAYER(
+    KC_Q, KC_W, KC_E, KC_R, KC_T,
+    KC_A, KC_S, KC_D, KC_F, KC_G,
+    KC_Z, KC_X, KC_C, KC_V, KC_B,
+
+    KC_Y, KC_U, KC_I,    KC_O,   KC_P,
+    KC_H, KC_J, KC_K,    KC_L,   KC_SCLN,
+    KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH),
+
+    /* Alternate COLEMAK base layer */
+    [COLEMAK] = BASE_LAYER(
+    KC_Q, KC_W, KC_F, KC_P, KC_G,
+    KC_A, KC_R, KC_S, KC_T, KC_D,
+    KC_Z, KC_X, KC_C, KC_V, KC_B,
+
+    KC_J, KC_L, KC_U,    KC_Y,   KC_SCLN,
+    KC_H, KC_N, KC_E,    KC_I,   KC_O,
+    KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH),
 
     [NUMP] = LAYOUT_tightyl(
 // left hand
@@ -209,18 +236,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       RESET,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 // right hand
 //        +-----+-----+-----+-----+-----+-------+
-//        |     |     |     |     |     |       |
+//        |QWERT|     |     |     |     |       |
 //        +-----+-----+-----+-----+-----+-------+
-//        |     |     |     |     |     |       |
+//        |COLEM|     |     |     |     |       |
 //        +-----+-----+-----+-----+-----+-------+
 //        |     |     |     |     |     |       |
 //  +-----+-----+-----+-----+-----+-----+-------+
 //  |     |     |     |     |RESET|
 //  +-----+-----+-----+-----+-----+
-             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, RESET
+             DF(QWERTY),  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             DF(COLEMAK), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, RESET
     ),
 /*
     [] = LAYOUT_tightyl(
