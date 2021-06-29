@@ -19,6 +19,7 @@
 enum layer_names {
     QWERTY,
     COLEMAK,
+    COLEMAK_DH,
     SYM,
     NUMB,  // split-hand number layer
     NUMP,  // right-hand number pad
@@ -88,6 +89,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_J, KC_L, KC_U,    KC_Y,   KC_SCLN,
     KC_H, KC_N, KC_E,    KC_I,   KC_O,
     KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH),
+
+    /* Alternate COLEMAK-DH base layer */
+    [COLEMAK_DH] = BASE_LAYER(
+    KC_Q, KC_W, KC_F, KC_P, KC_B,
+    KC_A, KC_R, KC_S, KC_T, KC_G,
+    KC_Z, KC_X, KC_C, KC_D, KC_V,
+
+    KC_J, KC_L, KC_U,    KC_Y,   KC_SCLN,
+    KC_M, KC_N, KC_E,    KC_I,   KC_O,
+    KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH),
 
     [NUMP] = LAYOUT_tightyl(
 // left hand
@@ -240,14 +251,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //        +-----+-----+-----+-----+-----+-------+
 //        |COLEM|     |     |     |     |       |
 //        +-----+-----+-----+-----+-----+-------+
-//        |     |     |     |     |     |       |
+//        |COLDH|     |     |     |     |       |
 //  +-----+-----+-----+-----+-----+-----+-------+
 //  |     |     |     |     |RESET|
 //  +-----+-----+-----+-----+-----+
-             DF(QWERTY),  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             DF(COLEMAK), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, RESET
+             DF(QWERTY),     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             DF(COLEMAK),    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             DF(COLEMAK_DH), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, RESET
     ),
 /*
     [] = LAYOUT_tightyl(
