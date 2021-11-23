@@ -27,6 +27,14 @@ enum layer_names {
     FUN,
 };
 
+#define THUMB_ESC  LT(SYM, KC_ESC)
+#define THUMB_SPC  LT(NAV, KC_SPC)
+#define THUMB_TAB  LT(MOUS, KC_TAB)
+
+#define THUMB_DEL  LT(MEDIA, KC_DEL)
+#define THUMB_BSPC LT(NUMB, KC_BSPC)
+#define THUMB_ENT  LT(SYM, KC_ENT)
+
 // left hand
 //  +-------+-----+-----+-----+-----+-----+
 //  | =     | l01 | l02 | l03 | l04 | l05 |
@@ -48,25 +56,25 @@ enum layer_names {
 //  +-----+-----+-----+-----+-----+-----+-------+
 //  | ENT | BSP | DEL | FUN |     |
 //  +-----+-----+-----+-----+-----+
-#define BASE_LAYER(                                                                                  \
-  l01, l02, l03, l04, l05,                                                                                      \
-  l11, l12, l13, l14, l15,                                                                                      \
-  l21, l22, l23, l24, l25,                                                                                      \
-                                                                                                                \
-  r00, r01, r02, r03, r04,                                                                                      \
-  r10, r11, r12, r13, r14,                                                                                      \
-  r20, r21, r22, r23, r24)                                                                                      \
-                                                                                                                \
-LAYOUT_tightyl(                                                                                                 \
-    KC_EQL,         l01,         l02,         l03,         l04,             l05,                                \
-    LCTL_T(KC_TAB), LCTL_T(l11), l12,         l13,         l14,             l15,                                \
-    KC_LSFT,        l21,         LALT_T(l22), LSFT_T(l23), LGUI_T(l24),     l25,                                \
-                                 KC_TRNS,     MO(FUN),     LT(SYM, KC_ESC), LT(NAV, KC_SPC), LT(MOUS, KC_TAB),  \
-                                                                                                                \
-                        r00,               r01,             r02,         r03,         r04,         KC_MINS,                 \
-                        r10,               r11,             r12,         r13,         RCTL_T(r14), RCTL_T(KC_QUOT),         \
-                        r20,               RGUI_T(r21),     RSFT_T(r22), RALT_T(r23), r24,         KC_RSFT,                 \
-    LT(MEDIA, KC_ENT),  LT(NUMB, KC_BSPC), LT(SYM, KC_DEL), MO(FUN),     KC_TRNS                                            \
+#define BASE_LAYER(                                                                             \
+  l01, l02, l03, l04, l05,                                                                      \
+  l11, l12, l13, l14, l15,                                                                      \
+  l21, l22, l23, l24, l25,                                                                      \
+                                                                                                \
+  r00, r01, r02, r03, r04,                                                                      \
+  r10, r11, r12, r13, r14,                                                                      \
+  r20, r21, r22, r23, r24)                                                                      \
+                                                                                                \
+LAYOUT_tightyl(                                                                                 \
+    KC_EQL,         l01,         l02,         l03,         l04,         l05,                    \
+    LCTL_T(KC_TAB), LCTL_T(l11), l12,         l13,         l14,         l15,                    \
+    KC_LSFT,        l21,         LALT_T(l22), LSFT_T(l23), LGUI_T(l24), l25,                    \
+                                 KC_TRNS,     MO(FUN),     THUMB_ESC,   THUMB_SPC, THUMB_TAB,   \
+                                                                                                \
+               r00,        r01,         r02,         r03,         r04,         KC_MINS,         \
+               r10,        r11,         r12,         r13,         RCTL_T(r14), RCTL_T(KC_QUOT), \
+               r20,        RGUI_T(r21), RSFT_T(r22), RALT_T(r23), r24,         KC_RSFT,         \
+    THUMB_ENT, THUMB_BSPC, THUMB_DEL,   MO(FUN),     KC_TRNS                                    \
     )
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -323,12 +331,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // Faster tapping-term for thumb keys
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LT(SYM, KC_ESC):
-        case LT(NAV, KC_SPC):
-        case LT(MOUS, KC_TAB):
-        case LT(MEDIA, KC_ENT):
-        case LT(NUMB, KC_BSPC):
-        case LT(SYM, KC_DEL):
+        case THUMB_ESC:
+        case THUMB_SPC:
+        case THUMB_TAB:
+        case THUMB_DEL:
+        case THUMB_BSPC:
+        case THUMB_ENT:
             return 150;
 
         default:
@@ -339,12 +347,12 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 // Use permissive-hold for all of the thumb keys
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LT(SYM, KC_ESC):
-        case LT(NAV, KC_SPC):
-        case LT(MOUS, KC_TAB):
-        case LT(MEDIA, KC_ENT):
-        case LT(NUMB, KC_BSPC):
-        case LT(SYM, KC_DEL):
+        case THUMB_ESC:
+        case THUMB_SPC:
+        case THUMB_TAB:
+        case THUMB_DEL:
+        case THUMB_BSPC:
+        case THUMB_ENT:
             return true;
 
         default:
