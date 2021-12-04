@@ -18,88 +18,170 @@
 
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
+    QWERTY_ALT,
+    COLEMAK_ALT,
     QWERTY,
     COLEMAK,
+
+    NUM_ALT,
+    NUM,
+
+    SYM_ALT,
     SYM,
-    NUMB,  // split-hand number layer
-    MOUS,  // right-hand number pad
+
+    MOUS,
     NAV,
     MEDIA,
     FUN,
+
+    CFG,
 };
-
-#define THUMB_ESC  LT(SYM, KC_ESC)
-#define THUMB_SPC  LT(NAV, KC_SPC)
-#define THUMB_TAB  LT(MOUS, KC_TAB)
-
-#define THUMB_DEL  LT(MEDIA, KC_DEL)
-#define THUMB_BSPC LT(NUMB, KC_BSPC)
-#define THUMB_ENT  LT(SYM, KC_ENT)
 
 // left hand
 //  +-------+-----+-----+-----+-----+-----+
-//  | =     | l01 | l02 | l03 | l04 | l05 |
+//  |   =   | l01 | l02 | l03 | l04 | l05 |
 //  +-------+-----+-----+-----+-----+-----+
-//  |TAB/CTL|C/l11| l12 | l13 | l14 | l15 |
+//  |  TAB  | l11 | l12 | l13 | l14 | l15 |
 //  +-------+-----+-----+-----+-----+-----+
-//  | LSHIFT| l21 |A/l22|S/l23|G/l24| l25 |
+//  | LSHIFT| l21 | l22 | l23 | l24 | l25 |
 //  +-------+-----+-----+-----+-----+-----+-----+
-//                |     | FUN | ESC | SPC | TAB |
+//                |     | CFG | lt1 | lt3 | lt3 |
 //                +-----+-----+-----+-----+-----+
 //
 // right hand
 //        +-----+-----+-----+-----+-----+-------+
 //        | r00 | r01 | r02 | r03 | r04 |   -   |
 //        +-----+-----+-----+-----+-----+-------+
-//        | r10 | r11 | r12 | r13 |C/r14|'/RCTL |
+//        | r10 |S/r11|C/r12|A/r13|G/r14|   '   |
 //        +-----+-----+-----+-----+-----+-------+
-//        | r20 |G/r21|S/r22|A/r23| r24 | RSHIFT|
+//        | r20 | r21 | r22 | r23 | r24 | RSHIFT|
 //  +-----+-----+-----+-----+-----+-----+-------+
-//  | ENT | BSP | DEL | FUN |     |
+//  | ENT | BSP | DEL | CFG |     |
 //  +-----+-----+-----+-----+-----+
-#define BASE_LAYER(                                                                             \
-  l01, l02, l03, l04, l05,                                                                      \
-  l11, l12, l13, l14, l15,                                                                      \
-  l21, l22, l23, l24, l25,                                                                      \
-                                                                                                \
-  r00, r01, r02, r03, r04,                                                                      \
-  r10, r11, r12, r13, r14,                                                                      \
-  r20, r21, r22, r23, r24)                                                                      \
-                                                                                                \
-LAYOUT_tightyl(                                                                                 \
-    KC_EQL,         l01,         l02,         l03,         l04,         l05,                    \
-    LCTL_T(KC_TAB), LCTL_T(l11), l12,         l13,         l14,         l15,                    \
-    KC_LSFT,        l21,         LALT_T(l22), LSFT_T(l23), LGUI_T(l24), l25,                    \
-                                 KC_TRNS,     MO(FUN),     THUMB_ESC,   THUMB_SPC, THUMB_TAB,   \
-                                                                                                \
-               r00,        r01,         r02,         r03,         r04,         KC_MINS,         \
-               r10,        r11,         r12,         r13,         RCTL_T(r14), RCTL_T(KC_QUOT), \
-               r20,        RGUI_T(r21), RSFT_T(r22), RALT_T(r23), r24,         KC_RSFT,         \
-    THUMB_ENT, THUMB_BSPC, THUMB_DEL,   MO(FUN),     KC_TRNS                                    \
+#define BASE_36(                                        \
+  l01, l02, l03, l04, l05,                              \
+  l11, l12, l13, l14, l15,                              \
+  l21, l22, l23, l24, l25,                              \
+                 lt1, lt2, lt3,                         \
+                                                        \
+       r00, r01, r02, r03, r04,                         \
+       r10, r11, r12, r13, r14,                         \
+       r20, r21, r22, r23, r24,                         \
+  rt1, rt2, rt3)                                        \
+                                                        \
+LAYOUT_tightyl(                                         \
+    KC_EQL,  l01, l02,     l03,     l04, l05,           \
+    KC_TAB,  l11, l12,     l13,     l14, l15,           \
+    KC_LSFT, l21, l22,     l23,     l24, l25,           \
+                  KC_TRNS, MO(CFG), lt1, lt2, lt3,      \
+                                                        \
+               r00, r01,     r02,    r03, r04, KC_MINS, \
+               r10, r11,     r12,    r13, r14, KC_QUOT, \
+               r20, r21,     r22,    r23, r24, KC_RSFT, \
+    rt1, rt2, rt3,  MO(CFG), KC_TRNS                    \
     )
 
+#define THUMB_ESC LT(MEDIA, KC_ESC)
+#define THUMB_SPC LT(NAV, KC_SPC)
+#define THUMB_TAB LT(MOUS, KC_TAB)
+
+#define THUMB_DEL LT(FUN, KC_DEL)
+#define THUMB_BSP LT(NUM, KC_BSPC)
+#define THUMB_ENT LT(SYM, KC_ENT)
+
+#define T_ALT_BSP LT(NUM_ALT, KC_BSPC)
+#define T_ALT_ENT LT(SYM_ALT, KC_ENT)
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /* Default QWERTY base layer */
-    [QWERTY] = BASE_LAYER(
-    KC_Q, KC_W, KC_E, KC_R, KC_T,
-    KC_A, KC_S, KC_D, KC_F, KC_G,
-    KC_Z, KC_X, KC_C, KC_V, KC_B,
+    // Default QWERTY base layer
+    // Homerow mods: GACS
+    [QWERTY_ALT] = BASE_36(
+    KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,
+    LGUI_T(KC_A), LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), KC_G,
+    KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,
+                                              THUMB_ESC,    THUMB_SPC, THUMB_TAB,
 
-    KC_Y, KC_U, KC_I,    KC_O,   KC_P,
-    KC_H, KC_J, KC_K,    KC_L,   KC_SCLN,
-    KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH),
+               KC_Y,      KC_U,         KC_I,         KC_O,         KC_P,
+               KC_H,      RSFT_T(KC_J), RCTL_T(KC_K), RALT_T(KC_L), RGUI_T(KC_SCLN),
+               KC_N,      KC_M,         KC_COMM,      KC_DOT,       KC_SLSH,
+    T_ALT_ENT, T_ALT_BSP, THUMB_DEL),
 
-    /* Alternate COLEMAK base layer */
-    [COLEMAK] = BASE_LAYER(
-    KC_Q, KC_W, KC_F, KC_P, KC_G,
-    KC_A, KC_R, KC_S, KC_T, KC_D,
-    KC_Z, KC_X, KC_C, KC_V, KC_B,
+    // Alternate COLEMAK base layer
+    // Homerow mods: GACS
+    [COLEMAK_ALT] = BASE_36(
+    KC_Q,         KC_W,         KC_F,         KC_P,         KC_G,
+    LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_D,
+    KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,
+                                THUMB_ESC,    THUMB_SPC,    THUMB_TAB,
 
-    KC_J, KC_L, KC_U,    KC_Y,   KC_SCLN,
-    KC_H, KC_N, KC_E,    KC_I,   KC_O,
-    KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH),
+               KC_J,      KC_L,         KC_U,         KC_Y,         KC_SCLN,
+               KC_H,      RSFT_T(KC_N), RCTL_T(KC_E), RALT_T(KC_I), RGUI_T(KC_O),
+               KC_K,      KC_M,         KC_COMM,      KC_DOT,       KC_SLSH,
+    T_ALT_ENT, T_ALT_BSP, THUMB_DEL),
 
-    [NUMB] = LAYOUT_tightyl(
+    // Alternate QWERTY base layer
+    // Homerow mods: C
+    //                ASG
+    [QWERTY] = BASE_36(
+    KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,
+    LCTL_T(KC_A), KC_S,         KC_D,         KC_F,         KC_G,
+    KC_Z,         LALT_T(KC_X), LSFT_T(KC_C), LGUI_T(KC_V), KC_B,
+                                              THUMB_ESC,    THUMB_SPC, THUMB_TAB,
+
+               KC_Y,      KC_U,         KC_I,            KC_O,           KC_P,
+               KC_H,      KC_J,         KC_K,            KC_L,           RCTL_T(KC_SCLN),
+               KC_N,      RGUI_T(KC_M), RSFT_T(KC_COMM), RALT_T(KC_DOT), KC_SLSH,
+    THUMB_ENT, THUMB_BSP, THUMB_DEL),
+
+    // Alternate COLEMAK base layer
+    // Homerow mods: C
+    //                ASG
+    [COLEMAK] = BASE_36(
+    KC_Q,         KC_W,         KC_F,         KC_P,         KC_G,
+    LCTL_T(KC_A), KC_R,         KC_S,         KC_T,         KC_D,
+    KC_Z,         LALT_T(KC_X), LSFT_T(KC_C), LGUI_T(KC_V), KC_B,
+                                              THUMB_ESC,    THUMB_SPC, THUMB_TAB,
+
+               KC_J,      KC_L,         KC_U,            KC_Y,           KC_SCLN,
+               KC_H,      KC_N,         KC_E,            KC_I,           RCTL_T(KC_O),
+               KC_K,      RGUI_T(KC_M), RSFT_T(KC_COMM), RALT_T(KC_DOT), KC_SLSH,
+    THUMB_ENT, THUMB_BSP, THUMB_DEL),
+
+
+    [NUM_ALT] = LAYOUT_tightyl(
+// left hand
+//  +-------+-----+-----+-----+-----+-----+
+//  |       |  [  |  7  |  8  |  9  |  ]  |
+//  +-------+-----+-----+-----+-----+-----+
+//  |       |  ;  |  4  |  5  |  6  |  =  |
+//  +-------+-----+-----+-----+-----+-----+
+//  |       |  `  |  1  |  2  |  3  |  \  |
+//  +-------+-----+-----+-----+-----+-----+-----+
+//                |     |     |  .  |  0  |  -  |
+//                +-----+-----+-----+-----+-----+
+
+    KC_TRNS, KC_LBRC, KC_7,    KC_8,    KC_9,   KC_RBRC,
+    KC_TRNS, KC_SCLN, KC_4,    KC_5,    KC_6,   KC_EQL,
+    KC_TRNS, KC_GRV,  KC_1,    KC_2,    KC_3,   KC_BSLS,
+                      KC_TRNS, KC_TRNS, KC_DOT, KC_0,    KC_MINS,
+// right hand
+//        +-----+-----+-----+-----+-----+-------+
+//        |     |     |     |     |     |       |
+//        +-----+-----+-----+-----+-----+-------+
+//        |     | RSFT| RCTL| RALT| RGUI|       |
+//        +-----+-----+-----+-----+-----+-------+
+//        |     |     |     |     |     |       |
+//  +-----+-----+-----+-----+-----+-----+-------+
+//  |     |     |     |     |     |
+//  +-----+-----+-----+-----+-----+
+             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             KC_TRNS, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI, KC_TRNS,
+             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+    ),
+
+    [NUM] = LAYOUT_tightyl(
 // left hand
 //  +-------+-----+-----+-----+-----+-----+
 //  |       |  1  |  2  |  3  |  4  |  5  |
@@ -131,69 +213,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
-    [NAV] = LAYOUT_tightyl(
+    [SYM_ALT] = LAYOUT_tightyl(
 // left hand
 //  +-------+-----+-----+-----+-----+-----+
-//  |       |     |     |     |     |     |
+//  |       |  {  |  &  |  *  |  (  |  }  |
 //  +-------+-----+-----+-----+-----+-----+
-//  |       | LCTL|     |     |     |     |
+//  |       |  :  |  $  |  %  |  ^  |  +  |
 //  +-------+-----+-----+-----+-----+-----+
-//  |       |     | LALT| LSFT| LGUI|     |
+//  |       |  ~  |  !  |  @  |  #  |  |  |
 //  +-------+-----+-----+-----+-----+-----+-----+
-//                |     |     |     |     |     |
+//                |     |     |  (  |  )  |  _  |
 //                +-----+-----+-----+-----+-----+
 
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_LALT, KC_LSFT, KC_LGUI, KC_TRNS,
-                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR,
+    KC_TRNS, KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS,
+    KC_TRNS, KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE,
+                      KC_TRNS, KC_TRNS, KC_LPRN, KC_RPRN, KC_UNDS,
 // right hand
 //        +-----+-----+-----+-----+-----+-------+
-//        | AGIN|PASTE| COPY| CUT | UNDO|       |
+//        |     |     |     |     |     |       |
 //        +-----+-----+-----+-----+-----+-------+
-//        | LEFT| DOWN| UP  |RIGHT| CAPS|       |
+//        |     | RSFT| RCTL| RALT| RGUI|       |
 //        +-----+-----+-----+-----+-----+-------+
-//        | HOME| PGDN| PGUP| END | INS |       |
+//        |     |     |     |     |     |       |
 //  +-----+-----+-----+-----+-----+-----+-------+
 //  |     |     |     |     |     |
 //  +-----+-----+-----+-----+-----+
-             KC_AGIN, KC_PSTE, KC_COPY, KC_CUT,  KC_UNDO, KC_TRNS,
-             KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_CAPS, KC_TRNS,
-             KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,  KC_TRNS,
+             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             KC_TRNS, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI, KC_TRNS,
+             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
-    [MOUS] = LAYOUT_tightyl(
-// left hand
-//  +-------+-----+-----+-----+-----+-----+
-//  |       |     |     |     |     |     |
-//  +-------+-----+-----+-----+-----+-----+
-//  |       | LCTL|     | MB2 | MB1 | MB3 |
-//  +-------+-----+-----+-----+-----+-----+
-//  |       |     | LALT| LSFT| LGUI|     |
-//  +-------+-----+-----+-----+-----+-----+-----+
-//                |     |     |     |     |     |
-//                +-----+-----+-----+-----+-----+
-
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_LCTL, KC_TRNS, KC_BTN2, KC_BTN1, KC_BTN3,
-    KC_TRNS, KC_TRNS, KC_LALT, KC_LSFT, KC_LGUI, KC_TRNS,
-                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-// right hand
-//        +-----+-----+-----+-----+-----+-------+
-//        | AGIN|PASTE| COPY| CUT | UNDO|       |
-//        +-----+-----+-----+-----+-----+-------+
-//        |MS_L |MS_D |MS_U |MS_R |     |       |
-//        +-----+-----+-----+-----+-----+-------+
-//        |WH_L |WH_D |WH_U |WH_R |     |       |
-//  +-----+-----+-----+-----+-----+-----+-------+
-//  | MB2 | MB1 | MB3 |     |     |
-//  +-----+-----+-----+-----+-----+
-             KC_AGIN, KC_PSTE, KC_COPY, KC_CUT,  KC_UNDO, KC_TRNS,
-             KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_TRNS, KC_TRNS,
-             KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_TRNS, KC_TRNS,
-    KC_BTN2, KC_BTN1, KC_BTN3, KC_TRNS, KC_TRNS
-    ),
 
     [SYM] = LAYOUT_tightyl(
 // left hand
@@ -227,68 +278,165 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
+    [NAV] = LAYOUT_tightyl(
+// left hand
+//  +-------+-----+-----+-----+-----+-----+
+//  |       |     |     |     |     |     |
+//  +-------+-----+-----+-----+-----+-----+
+//  |       | LGUI| LALT| LCTL| LSFT|     |
+//  +-------+-----+-----+-----+-----+-----+
+//  |       |     |     |     |     |     |
+//  +-------+-----+-----+-----+-----+-----+-----+
+//                |     |     |     |     |     |
+//                +-----+-----+-----+-----+-----+
+
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+// right hand
+//        +-----+-----+-----+-----+-----+-------+
+//        | AGIN|PASTE| COPY| CUT | UNDO|       |
+//        +-----+-----+-----+-----+-----+-------+
+//        | LEFT| DOWN| UP  |RIGHT| CAPS|       |
+//        +-----+-----+-----+-----+-----+-------+
+//        | HOME| PGDN| PGUP| END | INS |       |
+//  +-----+-----+-----+-----+-----+-----+-------+
+//  |     |     |     |     |     |
+//  +-----+-----+-----+-----+-----+
+             KC_AGIN, KC_PSTE, KC_COPY, KC_CUT,  KC_UNDO, KC_TRNS,
+             KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_CAPS, KC_TRNS,
+             KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,  KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+    ),
+
+    [MOUS] = LAYOUT_tightyl(
+
+// left hand
+//  +-------+-----+-----+-----+-----+-----+
+//  |       |     | MB3 | MB1 | MB2 |     |
+//  +-------+-----+-----+-----+-----+-----+
+//  |       | LGUI| LALT| LCTL| LSFT|     |
+//  +-------+-----+-----+-----+-----+-----+
+//  |       |     |     |     |     |     |
+//  +-------+-----+-----+-----+-----+-----+-----+
+//                |     |     |     |     |     |
+//                +-----+-----+-----+-----+-----+
+
+    KC_TRNS, KC_TRNS, KC_BTN3, KC_BTN1, KC_BTN2, KC_TRNS,
+    KC_TRNS, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+// right hand
+//        +-----+-----+-----+-----+-----+-------+
+//        | AGIN|PASTE| COPY| CUT | UNDO|       |
+//        +-----+-----+-----+-----+-----+-------+
+//        |MS_L |MS_D |MS_U |MS_R |     |       |
+//        +-----+-----+-----+-----+-----+-------+
+//        |WH_L |WH_D |WH_U |WH_R |     |       |
+//  +-----+-----+-----+-----+-----+-----+-------+
+//  | MB2 | MB1 | MB3 |     |     |
+//  +-----+-----+-----+-----+-----+
+             KC_AGIN, KC_PSTE, KC_COPY, KC_CUT,  KC_UNDO, KC_TRNS,
+             KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_TRNS, KC_TRNS,
+             KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_TRNS, KC_TRNS,
+    KC_BTN2, KC_BTN1, KC_BTN3, KC_TRNS, KC_TRNS
+    ),
+
     [MEDIA] = LAYOUT_tightyl(
 // left hand
 //  +-------+-----+-----+-----+-----+-----+
 //  |       |     |     |     |     |     |
 //  +-------+-----+-----+-----+-----+-----+
-//  |       |     |     | VOLU| MNXT|     |
+//  |       | LGUI| LALT| LCTL| LSFT|     |
 //  +-------+-----+-----+-----+-----+-----+
-//  |       |     |     | VOLD| MPRV|     |
+//  |       |     |     |     |     |     |
 //  +-------+-----+-----+-----+-----+-----+-----+
-//                |     |     | MUTE| MPLY| MSTP|
+//                |     |     |     |     |     |
 //                +-----+-----+-----+-----+-----+
 
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_VOLU, KC_MNXT, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_VOLD, KC_MPRV, KC_TRNS,
-                      KC_TRNS, KC_TRNS, KC_MUTE, KC_MPLY, KC_MSTP,
+    KC_TRNS, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 // right hand
 //        +-----+-----+-----+-----+-----+-------+
 //        |     |     |     |     |     |       |
 //        +-----+-----+-----+-----+-----+-------+
+//        |     | MPRV| VOLD| VOLU| MNXT|       |
+//        +-----+-----+-----+-----+-----+-------+
 //        |     |     |     |     |     |       |
+//  +-----+-----+-----+-----+-----+-----+-------+
+//  | MSTP| MPLY| MUTE|     |     |
+//  +-----+-----+-----+-----+-----+
+             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             KC_TRNS, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, KC_TRNS,
+             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_MSTP, KC_MPLY, KC_MUTE, KC_TRNS, KC_TRNS
+    ),
+
+    [FUN] = LAYOUT_tightyl(
+// left hand
+//  +-------+-----+-----+-----+-----+-----+
+//  |       | F12 |  F7 |  F8 |  F9 |     |
+//  +-------+-----+-----+-----+-----+-----+
+//  |       | F11 |  F4 |  F5 |  F6 |     |
+//  +-------+-----+-----+-----+-----+-----+
+//  |       | F10 |  F1 |  F2 |  F3 |     |
+//  +-------+-----+-----+-----+-----+-----+-----+
+//                |     |     |     |     |     |
+//                +-----+-----+-----+-----+-----+
+
+    KC_TRNS, KC_F12, KC_F7,   KC_F8,   KC_F9,   KC_TRNS,
+    KC_TRNS, KC_F11, KC_F4,   KC_F5,   KC_F6,   KC_TRNS,
+    KC_TRNS, KC_F10, KC_F1,   KC_F2,   KC_F3,   KC_TRNS,
+                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+// right hand
+//        +-----+-----+-----+-----+-----+-------+
+//        |     |     |     |     |     |       |
+//        +-----+-----+-----+-----+-----+-------+
+//        |     | RSFT| RCTL| RALT| RGUI|       |
 //        +-----+-----+-----+-----+-----+-------+
 //        |     |     |     |     |     |       |
 //  +-----+-----+-----+-----+-----+-----+-------+
 //  |     |     |     |     |     |
 //  +-----+-----+-----+-----+-----+
              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             KC_TRNS, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI, KC_TRNS,
              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
-    [FUN] = LAYOUT_tightyl(
+    [CFG] = LAYOUT_tightyl(
 // left hand
 //  +-------+-----+-----+-----+-----+-----+
-//  |       |  F1 |  F2 |  F3 |  F4 |  F5 |
+//  |       |     |     |     |     |     |
 //  +-------+-----+-----+-----+-----+-----+
-//  |       |  F6 |  F7 |  F8 |  F9 | F10 |
+//  |       |     |     |     |     |     |
 //  +-------+-----+-----+-----+-----+-----+
-//  |       |     |     | F11 | F12 |     |
+//  |       |     |     |     |     |     |
 //  +-------+-----+-----+-----+-----+-----+-----+
 //                |RESET|     |     |     |     |
 //                +-----+-----+-----+-----+-----+
 
-    KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,
-    KC_TRNS, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_F11,  KC_F12,  KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                       RESET,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 // right hand
 //        +-----+-----+-----+-----+-----+-------+
-//        |     |QWERT|     |     |     |       |
+//        |QWERT|QWER2|     |     |     |       |
 //        +-----+-----+-----+-----+-----+-------+
-//        |     |COLEM|     |     |     |       |
+//        |COLEM|COLE2|     |     |     |       |
 //        +-----+-----+-----+-----+-----+-------+
 //        |     |     |     |     |     |       |
 //  +-----+-----+-----+-----+-----+-----+-------+
 //  |     |     |     |     |RESET|
 //  +-----+-----+-----+-----+-----+
-             KC_TRNS, DF(QWERTY), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS, DF(COLEMAK),KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, RESET
+             DF(QWERTY), DF(QWERTY_ALT),  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             DF(COLEMAK),DF(COLEMAK_ALT), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             KC_TRNS,    KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS,    KC_TRNS,         KC_TRNS, RESET
     ),
 /*
     [] = LAYOUT_tightyl(
@@ -340,8 +488,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case THUMB_SPC:
         case THUMB_TAB:
         case THUMB_DEL:
-        case THUMB_BSPC:
+        case THUMB_BSP:
         case THUMB_ENT:
+        case T_ALT_BSP:
+        case T_ALT_ENT:
             return 150;
 
         default:
@@ -356,8 +506,10 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
         case THUMB_SPC:
         case THUMB_TAB:
         case THUMB_DEL:
-        case THUMB_BSPC:
+        case THUMB_BSP:
         case THUMB_ENT:
+        case T_ALT_BSP:
+        case T_ALT_ENT:
             return true;
 
         default:
