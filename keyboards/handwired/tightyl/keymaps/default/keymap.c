@@ -502,6 +502,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 // Use permissive-hold for all of the thumb keys
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case LSFT_T(KC_F):
+        case RSFT_T(KC_J):
         case THUMB_ESC:
         case THUMB_SPC:
         case THUMB_TAB:
