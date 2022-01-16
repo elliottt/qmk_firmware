@@ -262,14 +262,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //        +-----+-----+-----+-----+-----+-------+
 //        |     |     |     |     |     |       |
 //        +-----+-----+-----+-----+-----+-------+
-//        |     | MPRV| VOLD| VOLU| MNXT|       |
+//        | MPRV| VOLD| VOLU| MNXT|     |       |
 //        +-----+-----+-----+-----+-----+-------+
 //        |     |     |     |     |     |       |
 //  +-----+-----+-----+-----+-----+-----+-------+
 //  | MSTP| MPLY| MUTE|     |     |
 //  +-----+-----+-----+-----+-----+
              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, KC_TRNS,
+             KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, KC_TRNS, KC_TRNS,
              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_MSTP, KC_MPLY, KC_MUTE, KC_TRNS, KC_TRNS
     ),
