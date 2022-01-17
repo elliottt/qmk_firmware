@@ -416,6 +416,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // Faster tapping-term for thumb keys
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case LSFT_T(KC_F):
+        case LSFT_T(KC_T):
+        case RSFT_T(KC_J):
+        case RSFT_T(KC_N):
+            return 250;
+
         case THUMB_ESC:
         case THUMB_SPC:
         case THUMB_TAB:
