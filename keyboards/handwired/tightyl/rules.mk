@@ -23,5 +23,6 @@ AUDIO_ENABLE = no           # Audio output
 SPLIT_KEYBOARD = yes
 LTO_ENABLE = yes
 COMBO_ENABLE = no
+DYNAMIC_TAPPING_TERM_ENABLE = yes
 
 SRC += features/caps_word.c
