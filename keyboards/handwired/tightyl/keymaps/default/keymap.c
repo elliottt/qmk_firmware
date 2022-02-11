@@ -356,17 +356,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       RESET,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 // right hand
 //        +-----+-----+-----+-----+-----+-------+
-//        |     |QWERT|     |     |     |       |
+//        |DT_UP|QWERT|     |     |     |       |
 //        +-----+-----+-----+-----+-----+-------+
-//        |     |COLEM|     |     |     |       |
+//        |DT_DN|COLEM|     |     |     |       |
 //        +-----+-----+-----+-----+-----+-------+
-//        |     |     |     |     |     |       |
+//        |DT_PR|     |     |     |     |       |
 //  +-----+-----+-----+-----+-----+-----+-------+
 //  |     |     |     |     |RESET|
 //  +-----+-----+-----+-----+-----+
-             KC_TRNS, DF(QWERTY),  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS, DF(COLEMAK), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             DT_UP,   DF(QWERTY),  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             DT_DOWN, DF(COLEMAK), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             DT_PRNT, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, RESET
     ),
 
@@ -416,12 +416,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // Faster tapping-term for thumb keys
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LSFT_T(KC_F):
-        case LSFT_T(KC_T):
-        case RSFT_T(KC_J):
-        case RSFT_T(KC_N):
-            return 250;
-
         case THUMB_ESC:
         case THUMB_SPC:
         case THUMB_TAB:
@@ -432,23 +426,5 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
         default:
             return TAPPING_TERM;
-    }
-}
-
-// Use permissive-hold for all of the thumb keys
-bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LSFT_T(KC_F):
-        case RSFT_T(KC_J):
-        case THUMB_ESC:
-        case THUMB_SPC:
-        case THUMB_TAB:
-        case THUMB_DEL:
-        case THUMB_BSP:
-        case THUMB_ENT:
-            return true;
-
-        default:
-            return false;
     }
 }
