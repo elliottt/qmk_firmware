@@ -14,7 +14,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
-#include "features/caps_word.h"
 
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
@@ -404,14 +403,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 */
 };
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_caps_word(keycode, record)) {
-        return false;
-    }
-
-    return true;
-}
 
 // Faster tapping-term for thumb keys
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
