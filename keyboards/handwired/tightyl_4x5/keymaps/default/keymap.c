@@ -340,32 +340,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [CFG] = LAYOUT_tightyl(
 // left hand
 //  +-----+-----+-----+-----+-----+
-//  |     |     |     |     |     |
+//  |     |     |AS_UP|QWERT|DT_UP|
 //  +-----+-----+-----+-----+-----+
-//  |     |     |     |     |     |
+//  |     |     |AS_DN|COLEM|DT_DN|
 //  +-----+-----+-----+-----+-----+
-//  |     |     |     |     |     |
+//  |     |     |AS_RP|     |DT_PR|
 //  +-----+-----+-----+-----+-----+-----+
 //        |RESET|     |     |     |     |
 //        +-----+-----+-----+-----+-----+
 
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             RESET,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_ASUP, DF(QWERTY),  DT_UP,
+    KC_TRNS, KC_TRNS, KC_ASDN, DF(COLEMAK), DT_DOWN,
+    KC_TRNS, KC_TRNS, KC_ASRP, KC_TRNS,     DT_PRNT,
+             RESET,   KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
 // right hand
 //        +-----+-----+-----+-----+-----+
-//        |DT_UP|QWERT|     |     |     |
+//        |DT_UP|QWERT|AS_UP|     |     |
 //        +-----+-----+-----+-----+-----+
-//        |DT_DN|COLEM|     |     |     |
+//        |DT_DN|COLEM|AS_DN|     |     |
 //        +-----+-----+-----+-----+-----+
-//        |DT_PR|     |     |     |     |
+//        |DT_PR|     |AS_RP|     |     |
 //  +-----+-----+-----+-----+-----+-----+
 //  |     |     |     |     |RESET|
 //  +-----+-----+-----+-----+-----+
-             DT_UP,   DF(QWERTY),  KC_TRNS, KC_TRNS, KC_TRNS,
-             DT_DOWN, DF(COLEMAK), KC_TRNS, KC_TRNS, KC_TRNS,
-             DT_PRNT, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS,
+             DT_UP,   DF(QWERTY),  KC_ASUP, KC_TRNS, KC_TRNS,
+             DT_DOWN, DF(COLEMAK), KC_ASDN, KC_TRNS, KC_TRNS,
+             DT_PRNT, KC_TRNS,     KC_ASRP, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, RESET
     ),
 
