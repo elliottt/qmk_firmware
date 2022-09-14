@@ -340,7 +340,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [CFG] = LAYOUT_tightyl(
 // left hand
 //  +-----+-----+-----+-----+-----+
-//  |     |     |AS_UP|QWERT|DT_UP|
+//  |     |TNKRO|AS_UP|QWERT|DT_UP|
 //  +-----+-----+-----+-----+-----+
 //  |     |     |AS_DN|COLEM|DT_DN|
 //  +-----+-----+-----+-----+-----+
@@ -349,13 +349,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //        |RESET|     |     |     |     |
 //        +-----+-----+-----+-----+-----+
 
-    KC_TRNS, KC_TRNS, KC_ASUP, DF(QWERTY),  DT_UP,
+    KC_TRNS, NK_TOGG, KC_ASUP, DF(QWERTY),  DT_UP,
     KC_TRNS, KC_TRNS, KC_ASDN, DF(COLEMAK), DT_DOWN,
     KC_TRNS, KC_TRNS, KC_ASRP, KC_TRNS,     DT_PRNT,
              RESET,   KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
 // right hand
 //        +-----+-----+-----+-----+-----+
-//        |DT_UP|QWERT|AS_UP|     |     |
+//        |DT_UP|QWERT|AS_UP|TNKRO|     |
 //        +-----+-----+-----+-----+-----+
 //        |DT_DN|COLEM|AS_DN|     |     |
 //        +-----+-----+-----+-----+-----+
@@ -363,7 +363,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  +-----+-----+-----+-----+-----+-----+
 //  |     |     |     |     |RESET|
 //  +-----+-----+-----+-----+-----+
-             DT_UP,   DF(QWERTY),  KC_ASUP, KC_TRNS, KC_TRNS,
+             DT_UP,   DF(QWERTY),  KC_ASUP, NK_TOGG, KC_TRNS,
              DT_DOWN, DF(COLEMAK), KC_ASDN, KC_TRNS, KC_TRNS,
              DT_PRNT, KC_TRNS,     KC_ASRP, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, RESET
