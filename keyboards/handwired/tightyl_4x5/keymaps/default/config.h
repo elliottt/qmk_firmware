@@ -18,6 +18,10 @@
 #define AUTO_SHIFT_TIMEOUT 150
 #define NO_AUTO_SHIFT_ALPHA
 
+// Making this non-zero fixes behavior where some applications wouldn't register auto-shifted keys. Experimentally I
+// found that 5 works well enough.
+#define TAP_CODE_DELAY 5
+
 #undef MOUSEKEY_DELAY
 #define MOUSEKEY_DELAY          0
 #undef MOUSEKEY_INTERVAL
