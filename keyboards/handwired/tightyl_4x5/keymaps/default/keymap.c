@@ -203,7 +203,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  |     |     |     |     |     |
 //  +-----+-----+-----+-----+-----+
              KC_AGIN, KC_PSTE, KC_COPY, KC_CUT,  KC_UNDO,
-             KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CAPSWRD,
+             KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CW_TOGG,
              KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
@@ -346,13 +346,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  +-----+-----+-----+-----+-----+
 //  |     |     |AS_RP|     |DT_PR|
 //  +-----+-----+-----+-----+-----+-----+
-//        |RESET|     |     |     |     |
+//        |BOOT |     |     |     |     |
 //        +-----+-----+-----+-----+-----+
 
-    KC_TRNS, NK_TOGG, KC_ASUP, DF(QWERTY),  DT_UP,
-    KC_TRNS, KC_TRNS, KC_ASDN, DF(COLEMAK), DT_DOWN,
-    KC_TRNS, KC_TRNS, KC_ASRP, KC_TRNS,     DT_PRNT,
-             RESET,   KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
+    KC_TRNS, NK_TOGG, AS_UP,   DF(QWERTY),  DT_UP,
+    KC_TRNS, KC_TRNS, AS_DOWN, DF(COLEMAK), DT_DOWN,
+    KC_TRNS, KC_TRNS, AS_RPT,  KC_TRNS,     DT_PRNT,
+             QK_BOOT, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
 // right hand
 //        +-----+-----+-----+-----+-----+
 //        |DT_UP|QWERT|AS_UP|TNKRO|     |
@@ -361,12 +361,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //        +-----+-----+-----+-----+-----+
 //        |DT_PR|     |AS_RP|     |     |
 //  +-----+-----+-----+-----+-----+-----+
-//  |     |     |     |     |RESET|
+//  |     |     |     |     |BOOT |
 //  +-----+-----+-----+-----+-----+
-             DT_UP,   DF(QWERTY),  KC_ASUP, NK_TOGG, KC_TRNS,
-             DT_DOWN, DF(COLEMAK), KC_ASDN, KC_TRNS, KC_TRNS,
-             DT_PRNT, KC_TRNS,     KC_ASRP, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, RESET
+             DT_UP,   DF(QWERTY),  AS_UP,   NK_TOGG, KC_TRNS,
+             DT_DOWN, DF(COLEMAK), AS_DOWN, KC_TRNS, KC_TRNS,
+             DT_PRNT, KC_TRNS,     AS_RPT,  KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, QK_BOOT
     ),
 
 /*

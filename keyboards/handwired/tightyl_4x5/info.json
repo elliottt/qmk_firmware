@@ -1,7 +1,13 @@
 {
     "keyboard_name": "tightyl-4x5",
-    "url": "",
     "maintainer": "Trevor Elliott",
+    "manufacturer": "elliottt",
+    "url": "",
+    "usb": {
+        "vid": "0xFEED",
+        "pid": "0x0001",
+        "device_version": "0.0.1"
+    },
     "width": 3,
     "height": 2,
     "layouts": {
