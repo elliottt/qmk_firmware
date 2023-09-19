@@ -138,10 +138,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  +-----+-----+-----+-----+-----+-----+
 //  |     |     |     |     |     |
 //  +-----+-----+-----+-----+-----+
-             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI,
-             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+            KC_TRNS, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI,
+            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_ENT, KC_BSPC, KC_DEL,  KC_TRNS, KC_TRNS
     ),
 
     [SYM] = LAYOUT_tightyl(
@@ -170,10 +170,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  +-----+-----+-----+-----+-----+-----+
 //  |     |     |     |     |     |
 //  +-----+-----+-----+-----+-----+
-             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI,
-             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+            KC_TRNS, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI,
+            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_ENT, KC_BSPC, KC_DEL,  KC_TRNS, KC_TRNS
     ),
 
     [NAV] = LAYOUT_tightyl(
@@ -191,7 +191,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             KC_TRNS, KC_TRNS, KC_ESC,  KC_SPC,  KC_TAB,
 // right hand
 //        +-----+-----+-----+-----+-----+
 //        | AGIN|PASTE| COPY| CUT | UNDO|
@@ -200,12 +200,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //        +-----+-----+-----+-----+-----+
 //        | HOME| PGDN| PGUP| END | INS |
 //  +-----+-----+-----+-----+-----+-----+
-//  |     |     |     |     |     |
+//  | ENT | BSP | DEL |     |     |
 //  +-----+-----+-----+-----+-----+
-             KC_AGIN, KC_PSTE, KC_COPY, KC_CUT,  KC_UNDO,
-             KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CW_TOGG,
-             KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+            KC_AGIN, KC_PSTE, KC_COPY, KC_CUT,  KC_UNDO,
+            KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CW_TOGG,
+            KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
+    KC_ENT, KC_BSPC, KC_DEL,  KC_TRNS, KC_TRNS
     ),
 
     [MOUSE] = LAYOUT_tightyl(
@@ -224,7 +224,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             KC_TRNS, KC_TRNS, KC_ESC,  KC_SPC,  KC_TAB,
 // right hand
 //        +-----+-----+-----+-----+-----+
 //        | AGIN|PASTE| COPY| CUT | UNDO|
@@ -256,7 +256,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             KC_TRNS, KC_TRNS, KC_ESC,  KC_SPC,  KC_TAB,
 // right hand
 //        +-----+-----+-----+-----+-----+
 //        |     |     |     |     |     |
@@ -285,10 +285,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //        |     |     |     |     |     |
 //        +-----+-----+-----+-----+-----+
 
-    KC_F12, KC_F7,   KC_F8,   KC_F9,   KC_TRNS,
-    KC_F11, KC_F4,   KC_F5,   KC_F6,   KC_TRNS,
-    KC_F10, KC_F1,   KC_F2,   KC_F3,   KC_TRNS,
-            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_F12, KC_F7,   KC_F8,   KC_F9,  KC_TRNS,
+    KC_F11, KC_F4,   KC_F5,   KC_F6,  KC_TRNS,
+    KC_F10, KC_F1,   KC_F2,   KC_F3,  KC_TRNS,
+            KC_TRNS, KC_TRNS, KC_ESC, KC_SPC,  KC_TAB,
 // right hand
 //        +-----+-----+-----+-----+-----+
 //        |     |     |     |     |     |
@@ -403,3 +403,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 */
 };
+
+// Enable double-tap to repeat for the thumb keys.
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case THUMB_ESC:
+        case THUMB_SPC:
+        case THUMB_TAB:
+        case THUMB_DEL:
+        case THUMB_BSP:
+        case THUMB_ENT:
+            return 160;
+
+        default:
+            return 0;
+    }
+}
