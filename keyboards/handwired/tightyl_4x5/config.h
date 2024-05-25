@@ -64,3 +64,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Handedness */
 #define SPLIT_HAND_PIN F5
+
+/* Ensure that the plugged-in side is detected as the master */
+#define SPLIT_USB_DETECT
