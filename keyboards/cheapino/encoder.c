@@ -4,8 +4,8 @@
 #define COL_SHIFTER ((uint16_t)1)
 
 #define ENC_ROW 3
-#define ENC_A_COL 2
-#define ENC_B_COL 4
+#define ENC_A_COL 4
+#define ENC_B_COL 2
 #define ENC_BUTTON_COL 0
 
 static bool colABPressed   = false;
