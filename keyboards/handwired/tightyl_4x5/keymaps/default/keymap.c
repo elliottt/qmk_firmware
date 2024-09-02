@@ -233,12 +233,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //        +-----+-----+-----+-----+-----+
 //        |WH_L |WH_D |WH_U |WH_R |     |
 //  +-----+-----+-----+-----+-----+-----+
-//  | MB1 | MB3 | MB2 |     |     |
+//  | MB2 | MB1 | MB3 |     |     |
 //  +-----+-----+-----+-----+-----+
              KC_AGIN, KC_PSTE, KC_COPY, KC_CUT,  KC_UNDO,
              KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_TRNS,
              KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_TRNS,
-    KC_BTN1, KC_BTN3, KC_BTN2, KC_TRNS, KC_TRNS
+    KC_BTN2, KC_BTN1, KC_BTN3, KC_TRNS, KC_TRNS
     ),
 
     [MEDIA] = LAYOUT_tightyl(
@@ -314,13 +314,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  +-----+-----+-----+-----+-----+
 //  | UNDO| CUT |COPY |PASTE|REDO |
 //  +-----+-----+-----+-----+-----+-----+
-//        |     |     | MB2 | MB3 | MB1 |
+//        |     |     | MB3 | MB1 | MB2 |
 //        +-----+-----+-----+-----+-----+
 
     KC_UNDO, KC_CUT,  KC_COPY, KC_PASTE, KC_AGIN,
     KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,  KC_TRNS,
     KC_UNDO, KC_CUT,  KC_COPY, KC_PASTE, KC_AGIN,
-             KC_TRNS, KC_TRNS, KC_BTN2,  KC_BTN3, KC_BTN1,
+             KC_TRNS, KC_TRNS, KC_BTN3,  KC_BTN1, KC_BTN2,
 // right hand
 //        +-----+-----+-----+-----+-----+
 //        |REDO |PASTE|COPY | CUT |UNDO |
@@ -329,12 +329,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //        +-----+-----+-----+-----+-----+
 //        |REDO |PASTE|COPY | CUT |UNDO |
 //  +-----+-----+-----+-----+-----+-----+
-//  | MB1 | MB3 | MB2 |     |     |
+//  | MB2 | MB1 | MB3 |     |     |
 //  +-----+-----+-----+-----+-----+
              KC_AGIN, KC_PASTE, KC_COPY, KC_CUT,  KC_UNDO,
              KC_TRNS, KC_RSFT,  KC_RCTL, KC_RALT, KC_RGUI,
              KC_AGIN, KC_PASTE, KC_COPY, KC_CUT,  KC_UNDO,
-    KC_BTN1, KC_BTN3, KC_BTN2,  KC_TRNS, KC_TRNS
+    KC_BTN2, KC_BTN1, KC_BTN3,  KC_TRNS, KC_TRNS
     ),
 
     [CFG] = LAYOUT_tightyl(
